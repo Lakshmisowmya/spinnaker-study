@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: team2-microservice
+        app: team2eks-microservice
         stack: frontend
         source: demo
-    name: team2-microservice
+    name: team2eks-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: team2-microservice
+            run: team2eks-microservice
     template:
         metadata:
             labels:
-                app: team2-microservice
-                run: team2-microservice
+                app: team2eks-microservice
+                run: team2eks-microservice
                 source: demo
         spec:
             containers:
-                -   image: 702037529261.dkr.ecr.us-west-2.amazonaws.com/team2-microservice
-                    name: team2-microservice
+                -   image: 702037529261.dkr.ecr.us-west-2.amazonaws.com/team2eks-microservice
+                    name: team2eks-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: team2-microservice-service
-    name: team2-microservice-service
+        app: team2eks-microservice-service
+    name: team2eks-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: team2-microservice
+        app: team2ekseks-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,13 +51,14 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: team2-ingress
+    name: team2eks-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /team2(/|$)(.*)
+                    -   path: /team2eks(/|$)(.*)
                         backend:
-                            serviceName: team2-microservice-service
+                            serviceName: team2eks-microservice-service
                             servicePort: 30201
+
