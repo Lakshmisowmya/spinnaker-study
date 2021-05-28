@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: team2-terraform-app-validate
+    name: team2-terraform-app
     namespace: microservices
 spec:
     template:
