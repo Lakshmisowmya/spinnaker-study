@@ -26,7 +26,7 @@ terraform {
    backend "s3" {
  # Replace this with your bucket name!
    bucket         = "ot-infra-state"
-   key            = "global/s3/terraform-test.tfstate"
+   key            = "global/s3/terraform-team2.tfstate"
    region         = "us-east-1"
    }
 }
