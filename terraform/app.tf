@@ -5,7 +5,7 @@ provider "aws" {
 variable "team-name" {
   description = "team-name"
   type        = string
-  default     = "default-team-name"
+  default     = "team2"
 }
 
 resource "aws_instance" "web" {
